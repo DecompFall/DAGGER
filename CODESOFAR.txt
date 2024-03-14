@@ -1,0 +1,198 @@
+in no order:
+The code so far
+
+LOAD MESSAGE
+
+char message[] = "\n\nDaggerfall is now loading - please wait.";
+
+int main() {
+    // Display the loading message
+    printf("%s\n", message);
+    // Other code for the loading process would follow here
+    
+    return 0;
+}
+
+CRASH THINGS
+
+const char* REPORT_EXE_PATH = "%s\\ARENA2\\REPORT.EXE";
+const char* BETHESDA_INF_PATH = "%s\\ARENA2\\BETHESDA.INF";
+
+WINDOWS ERROR MESSAGE
+
+const char* ERROR_MESSAGE = "ERROR: Daggerfall will not run under Windows because you must start the game from DOS.\n";
+
+WINDOWS SCANNER
+
+const char* SCANNING_MESSAGE = "Scanning for Windows........................";
+
+INIT(?) CODE
+
+void InitializeSystem() {
+    // Call initialization routines
+    InitRoutine1();
+    SetupRoutine1(0x31); // Passing some parameter
+    InitRoutine2();
+    SetupRoutine2();
+    SetupRoutine1(0x40); // Passing another parameter
+}
+
+SOMETHING
+
+undefined4 __cdecl16near FUN_1000_002c(void)
+{
+  bool bVar1;
+  undefined2 uVar2;
+  char *pcVar3;
+  int iVar4;
+  uint uVar5;
+  undefined2 in_DX;
+  int iVar6;
+  undefined2 unaff_DS;
+  long lVar7;
+
+  FUN_1000_0a21(); // Call some initialization function
+
+  bVar1 = false; // Initialize a boolean variable to false
+
+  uVar2 = FUN_1000_0c06(); // Call a function, presumably to get some value
+  *(undefined2 *)0x173e = uVar2; // Store the obtained value at address 0x173e
+
+  do {
+    pcVar3 = FUN_1000_0c89(); // Call a function to get a character
+    if (pcVar3 == (char *)0x0) { // Check if the character is NULL
+      // Handle case when character is NULL
+      FUN_1000_0d8e(); // Call a function
+      iVar6 = 0;
+      while( true ) {
+        iVar4 = FUN_1000_0ce6(); // Call a function
+        if (*(char *)(iVar4 + iVar6 + 0x177a) != ' ') // Check if a character is not a space
+          break;
+        iVar6 = iVar6 + 1;
+      }
+      if (bVar1) {
+        iVar4 = FUN_1000_0ce6();
+        iVar6 = iVar4 + 0x177a + iVar6;
+      }
+      else {
+        iVar6 = 0;
+      }
+      return CONCAT22(in_DX,iVar6); // Return a concatenated value
+    }
+    iVar6 = 0;
+    while( true ) {
+      iVar4 = FUN_1000_0ce6();
+      if (iVar4 <= iVar6)
+        break;
+      if (*(char *)(iVar6 + 0x177a) == '\t') { // Check if a character is a tab
+        *(undefined *)(iVar6 + 0x177a) = 0x20; // Replace the tab with a space
+      }
+      iVar6 = iVar6 + 1;
+    }
+    FUN_1000_0ce6(); // Call a function
+    uVar5 = FUN_1000_0cff(); // Call a function
+    if (uVar5 == 0) {
+      bVar1 = true; // Set a boolean variable to true
+      iVar6 = FUN_1000_0ce6(); // Call a function
+      *(undefined *)(iVar6 + 0x1779) = 0; // Modify memory
+      goto LAB_1000_00a9; // Jump to a label
+    }
+    lVar7 = FUN_1000_0d48(); // Call a function
+    *(undefined2 *)0x1734 = (int)lVar7; // Store a value
+    *(undefined2 *)0x1736 = (int)((ulong)lVar7 >> 0x10); // Store a value
+
+  } while( true ); // Infinite loop
+}
+
+ENTRY THING
+
+undefined2 entry(void)
+{
+  uint *puVar1;
+  char *pcVar2;
+  char *pcVar3;
+  undefined *puVar4;
+  int *piVar5;
+  char cVar6;
+  code *pcVar7;
+  undefined2 uVar8;
+  uint uVar9;
+  int iVar10;
+  int extraout_DX;
+  undefined2 *puVar11;
+  undefined2 *puVar12;
+  undefined2 *puVar13;
+  int unaff_BP;
+  uint *puVar14;
+  uint *puVar15;
+  char *pcVar16;
+  char *pcVar17;
+  undefined *puVar18;
+  int *piVar19;
+  int unaff_DS;
+  undefined uVar20;
+  
+  // Initialization
+  DAT_144d_0afa = (char *)0x17e0;
+  puVar11 = (undefined2 *)0x1fe0;
+  DAT_144d_0afc = 0x1fe0;
+  iVar10 = 0x1fe;
+  uVar20 = DAT_144d_0af8 == '\0';
+  DAT_144d_0af4 = unaff_DS;
+  
+  if ((bool)uVar20) {
+    if (*(int *)0x2 + 0xebb3U < 0x1ff) {
+      uRam000164ae = 0x1a9b;
+      FUN_1000_1c01();
+      iVar10 = extraout_DX;
+    }
+    DAT_144d_0af2 = iVar10 << 4;
+    if (DAT_144d_0af2 == 0) {
+      DAT_144d_0af2 = -2;
+    }
+    uVar20 = iVar10 + 0x144d == DAT_144d_0af4;
+    pcVar7 = (code *)swi(0x21);
+    (*pcVar7)();
+  }
+  
+  // Character processing
+  pcVar16 = (char *)0x81;
+  uVar9 = (uint)*(byte *)0x80;
+  
+  do {
+    if (uVar9 == 0) 
+      break;
+    uVar9 = uVar9 - 1;
+    pcVar2 = pcVar16;
+    pcVar16 = pcVar16 + 1;
+    uVar20 = *pcVar2 == ' ';
+  } while ((bool)uVar20);
+  
+  pcVar16 = pcVar16 + -1;
+  DAT_144d_0b14 = DAT_144d_0afa;
+  DAT_144d_0b16 = 0x144d;
+  pcVar17 = DAT_144d_0afa;
+  
+  if (!(bool)uVar20) {
+    for (iVar10 = uVar9 + 1; iVar10 != 0; iVar10 = iVar10 + -1) {
+      pcVar3 = pcVar17;
+      pcVar17 = pcVar17 + 1;
+      pcVar2 = pcVar16;
+      pcVar16 = pcVar16 + 1;
+      *pcVar3 = *pcVar2;
+    }
+  }
+  
+  *pcVar17 = '\0';
+  pcVar17[1] = '\0';
+  pcVar17 = pcVar17 + 1;
+  pcVar7 = (code *)swi(0x21);
+  uVar8 = (*pcVar7)();
+  DAT_144d_0af6 = (byte)uVar8;
+  DAT_144d_0af7 = (undefined)((uint)uVar8 >> 8);
+  DAT_144d_0afa = pcVar17;
+  
+  // Other processing...
+  
+  return *(undefined2 *)((int)puVar11 + -2);
+}
